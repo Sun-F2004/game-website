@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: 123456
+      url: jdbc:mysql://localhost:3306/game_website?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+  main:
+    allow-circular-references: true #允许循环依赖
+  redis:
+    port: 6379
+    database: 0
+    host: localhost
+
+server:
+  port: 8080
+
+mybatis:
+  type-aliases-package: com.firewin.entity #别名对象的包
+  mapper-locations: classpath:mapper/*.xml
+
+firewin:
+  jwt:
+   admin-secret-key: firewin #设置jwt签名加密时使用的秘钥
+   admin-ttl: 7200000 #设置jwt过期时间
+   admin-token-name: token #设置前端传递过来的令牌名称
