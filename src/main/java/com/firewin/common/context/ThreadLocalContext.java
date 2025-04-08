@@ -1,4 +1,4 @@
-package com.firewin.context;
+package com.firewin.common.context;
 
 public class ThreadLocalContext {
 

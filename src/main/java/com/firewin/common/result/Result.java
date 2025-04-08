@@ -1,6 +1,9 @@
 package com.firewin.common.result;
 
+import lombok.Data;
+
 //返回消息的统一封装类
+@Data
 public class Result<T> {
 
     private Integer code; //编码：1成功，0为失败

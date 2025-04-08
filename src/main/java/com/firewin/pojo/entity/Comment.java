@@ -1,4 +1,4 @@
-package com.firewin.entity;
+package com.firewin.pojo.entity;
 
 //用户的评论
 

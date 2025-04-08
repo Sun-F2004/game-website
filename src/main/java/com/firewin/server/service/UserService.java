@@ -1,8 +1,11 @@
 package com.firewin.server.service;
 
-import com.firewin.entity.dto.UserRegLoginDTO;
+import com.firewin.common.exception.BaseException;
+import com.firewin.pojo.dto.UserRegLoginDTO;
 
 public interface UserService {
 
-    public void reg(UserRegLoginDTO userRegLoginDTO);
+    void reg(UserRegLoginDTO userRegLoginDTO);
+
+    String login(UserRegLoginDTO userRegLoginDTO);
 }

@@ -1,4 +1,4 @@
-package com.firewin.entity;
+package com.firewin.pojo.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

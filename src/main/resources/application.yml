@@ -16,11 +16,11 @@ server:
   port: 8080
 
 mybatis:
-  type-aliases-package: com.firewin.entity #别名对象的包
+  type-aliases-package: com.firewin.pojo.entity #别名对象的包
   mapper-locations: classpath:mapper/*.xml
 
 firewin:
   jwt:
-   admin-secret-key: firewin #设置jwt签名加密时使用的秘钥
-   admin-ttl: 7200000 #设置jwt过期时间
-   admin-token-name: token #设置前端传递过来的令牌名称
+    admin-secret-key: firewin #设置jwt签名加密时使用的秘钥
+    admin-ttl: 7200000 #设置jwt过期时间
+    admin-token-name: token #设置前端传递过来的令牌名称

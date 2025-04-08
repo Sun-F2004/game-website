@@ -3,7 +3,7 @@ package com.firewin.server.interceptor;
 import com.firewin.common.constant.JwtClaimsConstant;
 import com.firewin.common.properties.JwtProperties;
 import com.firewin.common.util.JwtUtil;
-import com.firewin.context.ThreadLocalContext;
+import com.firewin.common.context.ThreadLocalContext;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

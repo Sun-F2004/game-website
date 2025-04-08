@@ -1,4 +1,4 @@
-package com.firewin.entity.dto;
+package com.firewin.pojo.dto;
 
 import lombok.Data;
 
