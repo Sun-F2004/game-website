@@ -2,9 +2,11 @@ package com.firewin.common.result;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 //返回消息的统一封装类
 @Data
-public class Result<T> {
+public class Result<T> implements Serializable {
 
     private Integer code; //编码：1成功，0为失败
     private String msg; //错误信息

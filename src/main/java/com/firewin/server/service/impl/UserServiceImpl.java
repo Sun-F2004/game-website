@@ -2,11 +2,13 @@ package com.firewin.server.service.impl;
 
 import com.firewin.common.constant.JwtClaimsConstant;
 import com.firewin.common.constant.UserConstant;
+import com.firewin.common.context.ThreadLocalContext;
 import com.firewin.common.exception.BaseException;
 import com.firewin.common.properties.JwtProperties;
 import com.firewin.common.util.JwtUtil;
 import com.firewin.pojo.entity.User;
 import com.firewin.pojo.dto.UserRegLoginDTO;
+import com.firewin.pojo.vo.UserInfoVO;
 import com.firewin.server.mapper.UserMapper;
 import com.firewin.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +28,7 @@ public class UserServiceImpl implements UserService {
     private JwtProperties jwtProperties;
 
     @Override
-    public void reg(UserRegLoginDTO userRegLoginDTO) {
+    public void register(UserRegLoginDTO userRegLoginDTO) {
         //赋值
         String password = userRegLoginDTO.getPassword();
         password = DigestUtils.md5DigestAsHex(password.getBytes()); //进行md5加密
@@ -49,7 +51,6 @@ public class UserServiceImpl implements UserService {
         String username = userRegLoginDTO.getUsername();
         String password = DigestUtils.md5DigestAsHex(userRegLoginDTO.getPassword().getBytes());
 
-
         User user = userMapper.getByUsername(username);
         //用户不存在
         if (user == null) {
@@ -70,5 +71,28 @@ public class UserServiceImpl implements UserService {
                 jwtProperties.getAdminSecretKey(),
                 jwtProperties.getAdminTtl(),
                 claims);
+    }
+
+    @Override
+    public UserInfoVO getInfo() {
+        //获取本地存储的id
+        Integer id = ThreadLocalContext.getCurrentId();
+        UserInfoVO userInfoVO = userMapper.getInfoById(id);
+
+        if(userInfoVO == null) {
+            throw new BaseException(UserConstant.USER_NO_EXIST);
+        }
+        userInfoVO.setUId(id);
+        return userInfoVO;
+    }
+
+    @Override
+    public UserInfoVO getInfoById(Integer id) {
+        UserInfoVO userInfoVO = userMapper.getInfoById(id);
+        if(userInfoVO == null) {
+            throw new BaseException(UserConstant.USER_NO_EXIST);
+        }
+
+        return userInfoVO;
     }
 }
